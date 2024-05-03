@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>État de la production</title>
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-5">État de la production</h1>
+    <hr class="barre opacity-100">
+
+    <h2 class="mt-4">Nombre de maraîchers par produit :</h2>
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>Produit</th>
+            <th>Nombre de Maraîchers</th>
+        </tr>
+        {% for etat in etat_maraichers %}
+            <tr>
+                <td>{{ etat.produit }}</td>
+                <td>{{ etat.nombre_maraichers }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2 class="mt-4">Surface totale de production par produit :</h2>
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>Produit</th>
+            <th>Surface Totale</th>
+        </tr>
+        {% for etat in etat_surface_totale %}
+            <tr>
+                <td>{{ etat.produit }}</td>
+                <td>{{ etat.surface_totale }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h2 class="mt-4">Surface totale cultivée par chaque maraîcher :</h2>
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>Maraîcher</th>
+            <th>Surface Totale Cultivée</th>
+        </tr>
+        {% for etat in etat_surface_par_maraicher %}
+            <tr>
+                <td>{{ etat.maraicher }}</td>
+                <td>{{ etat.surface_totale }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" >
+    <link rel="stylesheet" href="{{ url_for('static', filename='mes_styles.css') }}" >
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}" >
+
+</head>
+<body class="bg-dark bg-opacity-25 " >
+{% include('_nav.html') %}
+                <h1 class="text-center mt-5">Miambio</h1>
+            <hr class="barre opacity-100">
+        {% block body %}
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+        {% endblock %}
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire produit</title>
+    <!-- Inclure Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}" >
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Modifier un Produit</h1>
+        <p></p>
+        <form action="/produit/edit" method="post">
+
+            <input name="id" value="{{produit.id}}" hidden>
+            <!-- Champ pour saisir le nom du produit -->
+            <div class="mb-3">
+                <label for="lbproduit" class="form-label">Libellé du Produit :</label>
+                <input type="text" class="form-control" value="{{produit.lbproduit}}" id="lbproduit" placeholder="Entrez le nom du produit" required>
+            </div>
+            <!-- Liste déroulante pour sélectionner le groupe du produit -->
+            <div class="mb-3">
+                <label for="Id_categorie_produit" class="form-label">catégorie du Produit :</label>
+                <select class="form-select" id="Id_categorie_produit" name="Id_categorie_produit"required>
+                    {% for categorie in categories %}
+                    <option value="{{categorie.Id_categorie_produit}}">{{categorie.libelle_categorie}}</option>
+                    {% endfor %}}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Editer le Produit</button>
+        </form>
+    </div>
+
+    <!-- Inclure Bootstrap 5 JS (pour les fonctionnalités supplémentaires) -->
+
+    <!-- Inclure Bootstrap 5 JS (pour les fonctionnalités supplémentaires) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

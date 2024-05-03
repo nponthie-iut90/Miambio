@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Produit</title>
+    <!-- Inclure Bootstrap 5 CSS -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}" >
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Ajouter un Produit</h1>
+        <form action="/produit/add" method="post">
+    <div class="mb-3">
+      <label for="lbproduit" class="form-label">Libellé du Produit</label>
+      <input type="text" class="form-control" id="lbproduit" name="lbproduit" placeholder="Entrez le libellé du produit" required>
+    </div>
+    <div class="mb-3">
+      <label for="Id_categorie_produit" class="form-label">Catégorie du Produit</label>
+      <select class="form-select" id="Id_categorie_produit" name="Id_categorie_produit" required>
+          {% for categorie in categories  %}
+                <option value="{{categorie.Id_categorie_produit}}">{{categorie.libelle_categorie}}</option>
+          {% endfor %}
+      </select>
+    </div>
+
+         <button type="submit" class="btn btn-danger">Ajouter un produit</button>
+        </form>
+</div>
+
+    <!-- Inclure Bootstrap 5 JS (pour les fonctionnalités supplémentaires) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

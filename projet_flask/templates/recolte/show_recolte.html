@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+    {% block title %}
+        <title>Récoltes</title>
+    {% endblock %}
+
+{% block body %}
+
+    <h1 class="text-center mt-5">Les récoltes de nos producteurs MIAMBIO </h1>
+
+    <a href="/recolte/add">Ajouter une récolte</a>
+
+    {% if recoltes | length >= 1 %}
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>récolte n°:</th>
+            <th>Quantité récoltée</th>
+            <th>Semaine</th>
+            <th>produit n°:</th>
+            <th>récolté par</th>
+            <th>Opération</th>
+        </tr>
+        {% for recolte in recoltes %}
+        <tr>
+
+            <td>{{ recolte.id }}</td>
+            <td>{{ recolte.qtRecolte }}</td>
+            <td>{{ recolte.semaine}}</td>
+            <td>{{ recolte.id_produit}}</td>
+            <td>{{ recolte.id_maraicher }}</td>
+            <td>
+                <a href="/recolte/edit?id={{ recolte.id }}">modifier la récolte</a>&nbsp;
+                <a href="/recolte/delete?id={{ recolte.id }}">supprimer la récolte</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <h2> la liste des récoltes est vide</h2>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+
+{% endblock %}
