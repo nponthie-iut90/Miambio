@@ -35,7 +35,7 @@ source venv/bin/activate
 
 Une fois lancé, le site permet de consulter, ajouter, modifier et supprimer des enregistrements concernant l'activité de *Miambio* dans la base données.
 
-## Auteurs:
+## Auteurs
 
 - [Nathan PONTHIEU](https://github.com/nponthie-iut90)
 - [Anna GAIFFE](https://github.com/agaiffe2-iut90)
