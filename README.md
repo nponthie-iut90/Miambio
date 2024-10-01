@@ -18,7 +18,7 @@ cd Miambio
 
 2. Configurer la base de donnée
     - Exécuter le fichier [sql_miambio.sql](sql_miambio.sql) dans une base de données SQL
-    - Changer les informations de connexion à la base de données dans le fichier [app.py](projet_flask/app.py)
+    - Changer les informations de connexion à la base de données dans le fichier [app.py](flask_app/app.py)
 
 3. Activer l'environnement virtuel
 ```bash
