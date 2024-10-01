@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Modifier une vente</title>
+{% endblock %}
+
+{% block body %}
+    <body>
+    <div class="container mt-4">
+        <h1 class="text-center mt-5">Formulaire de vente</h1>
+        <form action="/vente/edit" method="post">
+         <input type="hidden" name="id_vente" value="{{ vente.id_vente }}">
+            <!-- Champs pour saisir les informations de la vente -->
+            <div class="mb-3">
+                <label class="form-label" for="Prix">Prix</label>
+                <input id="Prix" type="text" name="Prix" size="18" value="{{ vente.prix_de_vente }}"
+                       placeholder="Saisir le prix de vente">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label" for="Quantitée_vendue">Quantité vendue</label>
+                <input id="Quantitée_vendue" type="text" name="Quantitée_vendue" size="18"
+                       value="{{ vente.quantitee_vendue }}" placeholder="Saisir la quantité vendue">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="Prix_total_de_vente">Prix total de vente</label>
+                <input id="Prix_total_de_vente" type="text" name="Prix_total_de_vente" size="18"
+                       value="{{ vente.prix_total_de_vente }}" placeholder="Saisir le prix total de vente">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label" for="Semaine"> Semaine n° :</label><br>
+                <select class="form-select" name="Semaine" id="Semaine" required>
+                    <option value="">Numéro de Semaine</option>
+                    {% for semaine in semaines %}
+                        <option value="{{ semaine.id_semaine }}"
+                                {% if semaine.id_semaine == vente.id_semaine %}selected{% endif %}>{{ semaine.id_semaine }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="produit">Produit :</label>
+                <select name="produit" id="produit" required>
+                    {% for produit in produits %}
+                        <option value="{{ produit.id_produit }}"
+                                {% if produit.id_produit == vente.id_produit %}selected{% endif %}>
+                            {{ produit.libelle_produit }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="Marché">Marché :</label>
+                <select class="form-select" name="Marché" id="Marché" required>
+                    <option value="" selected>Sélectionner le marché</option>
+                    {% for marche in marches %}
+                        <option value="{{ marche.id_marche }}"
+                                {% if marche.date_marche == vente.id_marche %}selected {% endif %}>{{ marche.lieu_du_marche }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="Maraichers">Maraichers</label><br>
+                <select class="form-select" name="Maraichers" id="Maraichers">
+                    <option value="" selected>Sélectionner un maraicher</option>
+                    {% for maraicher in maraichers %}
+                        <option value="{{ maraicher.id_maraicher }}"
+                                {% if maraicher.id_maraicher == vente.id_maraicher %}selected{% endif %}> {{ maraicher.nom_maraicher }}</option>
+                    {% endfor %}
+                </select><br>
+            </div>
+              <button type="submit" class="btn btn-success">Enregistrer</button>
+                    <a class="btn btn-danger" href="/vente/show">Annuler</a>
+        </form>
+    </div>
+    </body>
+{% endblock %}

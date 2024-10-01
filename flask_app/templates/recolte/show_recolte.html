@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title>Récoltes</title>
+{% endblock %}
+
+{% block body %}
+<h1 class="text-center mt-5">Les récoltes de nos producteurs MIAMBIO</h1>
+<div class="row justify-content-center">
+    <div class="col-8">
+        <hr class="my-4 rounded" style="height: 4px; background-color: darkgreen; ">
+    </div>
+</div>
+<div class="container">
+    <a class="btn btn-primary m-lg-2" href="/recolte/add">Ajouter une récolte</a>
+
+    {% if recoltes | length >= 1 %}
+    <table class="table table-dark table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>récolte n°:</th>
+                <th>Quantité récoltée</th>
+                <th>Semaine</th>
+                <th>produit n°:</th>
+                <th>récolté par</th>
+                <th>Opération</th>
+            </tr>
+        </thead>
+        {% for recolte in recoltes %}
+        <tr>
+            <td>{{ recolte.id_recolte }}</td>
+            <td>{{ recolte.quantite_recoltee }} kg</td>
+            <td>{{ recolte.id_semaine}}</td>
+            <td>({{ recolte.id_produit}})
+                {% for produit in produits %}
+                    {% if recolte.id_produit == produit.id_produit %}
+                        {{ produit.libelle_produit }}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>({{ recolte.id_maraicher }}) 
+                {% for maraicher in maraichers%}
+                    {% if recolte.id_maraicher==maraicher.id_maraicher %} 
+                        {{ maraicher.nom_maraicher}} 
+                    {% endif %}
+                {% endfor %} 
+            </td>
+            <td>
+                <a class="btn btn-warning" href="/recolte/edit?id={{ recolte.id_recolte }}">Modifier</a>&nbsp;
+                <a class="btn btn-danger" href="/recolte/delete?id={{ recolte.id_recolte }}">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <h2>La liste des récoltes est vide</h2>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>
+
+    {% endblock %}

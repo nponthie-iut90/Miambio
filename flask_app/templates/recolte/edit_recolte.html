@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+    {% block title %}
+        <title>Modifier une récolte</title>
+    {% endblock %}
+
+{% block body %}
+
+<body>
+ <h1 class="text-center mt-5">Modifier une récolte</h1>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <hr class="my-4 rounded" style="height: 4px; background-color: darkgreen; ">
+        </div>
+    </div>
+        <form action="/recolte/edit" method="post">
+            <div class="container">
+
+            <input type="text" value="{{recolte.id}}" hidden name="id">
+
+
+            <label for="qtRecolte">Quantité récoltée (en kg) </label><br>
+            <input class="form-control" type="number" name="qtRecolte" size="18" value="{{recolte.qtRecolte}}" id="qtRecolte">
+
+            <br>
+            <label for="Id_Semaine"> Semaine n° :</label><br>
+            <select class="form-select" name="Id_Semaine" id="Id_Semaine" required>
+                <option value="" >Numéro de semaine</option>
+                {% for semaine in semaines%}
+                    <option value="{{semaine.id_semaine}}" {% if semaine.id_semaine == recolte.semaine %} selected {% endif %} >{{ semaine.id_semaine }}</option>
+                {% endfor %}
+            </select>
+
+            <br>
+                <label for="Id_produit"> Produit récolté :</label><br>
+                <select class="form-select" name="Id_produit" id="Id_produit" required>
+                    <option value="">Produit...</option>
+                    {% for produit in produits %}
+                    <option value="{{produit.id_produit}}" {%if produit.id_produit == recolte.id_produit %} selected {% endif %}>{{ produit.libelle_produit }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+             <label for="Id_Maraicher"> Récoltée par :</label><br>
+            <select class="form-select" name="Id_Maraicher" id="Id_Maraicher" required>
+                <option value="">Sélectionner un maraicher</option>
+                {% for maraicher in maraichers%}
+                    <option value="{{maraicher.id_maraicher}}" {% if maraicher.id_maraicher == recolte.id_maraicher %}selected{% endif %}>{{maraicher.nom_maraicher}}</option>
+                {%endfor%}
+            </select>
+                <br>
+             <button type="submit" class="btn btn-success">Editer la récolte</button>
+            <a class="btn btn-danger" href="/recolte/show">Annuler</a>
+        </form>
+
+
+    <!-- Inclure Bootstrap 5 JS (pour les fonctionnalités supplémentaires) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.min.js"></script>
+
+   {% endblock %}

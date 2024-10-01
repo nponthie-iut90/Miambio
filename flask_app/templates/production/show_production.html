@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Les productions</title>
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-5">Les productions</h1>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <hr class="my-4 rounded" style="height: 4px; background-color: darkgreen; ">
+        </div>
+    </div>
+    <div class="container">
+        <a class="btn btn-primary m-lg-2" href="/production/add">Ajouter une production</a>
+        {% if production | length >= 1 %}
+            <table class="table table-dark table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>id</th>
+                    <th>Produit</th>
+                    <th>Maraîcher</th>
+                    <th>Surface cultivée</th>
+                    <th>modifications</th>
+                </tr>
+                 </thead>
+                {% for ligne in production %}
+                    <tr>
+                        <td>{{ ligne.id_production }}</td>
+                        <td>{{ ligne.libelle_produit }}</td>
+                        <td>{{ ligne.nom_maraicher }}</td>
+                        <td>{{ ligne.surface_cultivee }} ha</td>
+                        <td>
+                            <a href="/production/edit?id={{ ligne.id_production }}" class="btn btn-warning"
+                               role="button">Modifier</a>
+                            <a href="/production/delete?id={{ ligne.id_production }}" class="btn btn-danger"
+                               role="button">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h2>La liste des productions est vide</h2>
+        {% endif %}
+    </div>
+{% endblock %}

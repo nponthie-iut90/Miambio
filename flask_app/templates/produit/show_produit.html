@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+    {% block title %}
+        <title>Produit</title>
+    {% endblock %}
+
+{% block body  %}
+ <h1 class="text-center mt-5">Les produits MIAMBIO</h1>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <hr class="my-4 rounded" style="height: 4px; background-color: darkgreen; ">
+        </div>
+    </div>
+    <div class="container">
+
+<a class="btn btn-primary m-lg-2" href="/produit/add" >Ajouter un produit</a>
+
+{% if produits | length >= 1 %}
+    <table class="table table-dark table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>id</th><th>Libellé produit</th><th>Catégorie Id</th><th>Opération</th>
+        </tr>
+         </thead>
+        {% for produit in produits %}
+            <tr>
+
+                <td>{{ produit.id_produit }}</td>
+                <td>{{ produit.libelle_produit }}</td>
+                <td>{{ produit.id_categorie_produit }}</td>
+                <td>
+                      <a class="btn btn-warning" href="/produit/edit?id={{ produit.id_produit }}">Modifier</a>&nbsp;
+                      <a class="btn btn-danger" href="/produit/delete?id={{ produit.id_produit }}" >Supprimer</a>
+                  </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <h2> la liste des produits est vide</h2>
+{% endif %}
+
+<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.js') }}"></script>    
+</body>
+ {% endblock %}

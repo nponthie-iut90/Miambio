@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+    {% block title %}
+        <title>Ajouter un produit</title>
+    {% endblock %}
+
+{% block body  %}
+<body>
+    <h1 class="text-center mt-5">Ajouter un produit</h1>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <hr class="my-4 rounded" style="height: 4px; background-color: darkgreen; ">
+        </div>
+    </div>
+        <div class="container">
+
+        <form action="/produit/add" method="post">
+    <div class="mb-3">
+      <label for="lbproduit" class="form-label">Libellé du Produit</label>
+      <input type="text" class="form-control" id="lbproduit" name="lbproduit" placeholder="Entrez le libellé du produit" required>
+    </div>
+    <div class="mb-3">
+      <label for="Id_categorie_produit" class="form-label">Catégorie du Produit</label>
+      <select class="form-select" id="Id_categorie_produit" name="Id_categorie_produit" required>
+        <option value="" selected>Sélectionner la catégorie de produit</option>
+          {% for categorie in categories  %}
+                <option value="{{categorie.id_categorie_produit}}">{{categorie.libelle_categorie}}</option>
+          {% endfor %}
+      </select>
+    </div>
+
+         <button type="submit" class="btn btn-success">Ajouter un produit</button>
+            <a class="btn btn-danger" href="/produit/show">Annuler</a>
+
+        </form>
+</div>
+
+    <!-- Inclure Bootstrap 5 JS (pour les fonctionnalités supplémentaires) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.min.js"></script>
+</body>
+ {% endblock %}

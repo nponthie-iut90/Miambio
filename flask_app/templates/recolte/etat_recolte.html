@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>État de la production</title>
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-5">État des récoltes</h1>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <hr class="my-4 rounded" style="height: 4px; background-color: darkgreen; ">
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="mt-4">Quantité totale de récolte d'un produit par semaine :</h2>
+       <table class="table table-dark table-striped">
+         <thead class="thead-dark">
+            <tr>
+                <th>Semaine</th>
+                <th>Produit</th>
+                <th>Quantité totale des récoltes</th>
+         </thead>
+            </tr>
+            {% for etat in etat_recolte_totale %}
+                <tr>
+                    <td>{{ etat.Id_Semaine}}</td>
+                    <td>{{ etat.Id_produit}}</td>
+                    <td>{{ etat.TotalRecolte }} kg</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+
+{% endblock %}

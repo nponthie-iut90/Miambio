@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Modifier une production</title>
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mt-5">Modifier une production</h1>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <hr class="my-4 rounded" style="height: 4px; background-color: darkgreen; ">
+        </div>
+    </div>
+    <div class="container">
+        <form method="post" action="/production/edit">
+            <input type="hidden" name="id" value="{{ production.id_production }}">
+            <label class="form-label" for="produit">Produit :</label>
+            <select class="form-select" name="produit" id="produit" required>
+                {% for produit in produits %}
+                    <option value="{{ produit.id_produit }}"
+                            {% if produit.id_produit == production.id_produit %}selected{% endif %}>{{ produit.libelle_produit }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label class="form-label" for="maraicher">Maraîcher :</label>
+            <select class="form-select" name="maraicher" id="maraicher" required>
+                {% for maraicher in maraichers %}
+                    <option value="{{ maraicher.id_maraicher }}"
+                            {% if maraicher.id_maraicher == production.id_maraicher %}selected{% endif %}>{{ maraicher.nom_maraicher }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label class="form-label" for="surface">Surface cultivée :</label>
+            <input class="form-control" type="number" name="surface" id="surface"
+                   value="{{ production.surface_cultivee }}" required>
+            <br>
+            <input class="btn btn-success" type="submit" value="Modifier">
+            <a class="btn btn-danger" href="/production/show">Annuler</a>
+
+        </form>
+    </div>
+{% endblock %}

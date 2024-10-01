@@ -1,0 +1,11 @@
+.flashes {
+    padding: 5px;
+    margin : 5px;
+}
+
+.alert-warning {
+    background-color: rgba(255, 197, 197, 1);
+}
+.alert-success {
+    background-color: #bdfdbd;
+}
