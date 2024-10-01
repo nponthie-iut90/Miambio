@@ -1,24 +1,46 @@
 # Miambio
 
-Ce proje est une application web simple de gestion de base de données pour une entreprise fictive nommée *Miambio* rélaisée avec Flask et une base données MySQL dans un groupe de 4 étudiants.
+Ce projet est une application web simple de gestion de base de données pour une entreprise fictive nommée *Miambio* rélaisée avec Flask et une base données MySQL dans un groupe de 4 étudiants.
 
-## Architecture
+## Sommaire
 
-- Le répertoire **flask_app** contient tout le nécéssaire à l'application
-- MCD
-- script sql pour faire fonctionner le site
+1. [Installation](#installation)
+2. [Utilisation](#utilisation)
+3. [Auteurs](#auteurs)
+
+## Installation
+
+1. Récupérer le projet
+```bash
+git clone https://github.com/agaiffe2-iut90/Miambio
+cd Miambio
+```
+
+2. Configurer la base de donnée
+    - Exécuter le fichier [sql_miambio.sql](sql_miambio.sql) dans une base de données SQL
+    - Changer les informations de connexion à la base de données dans le fichier [app.py](projet_flask/app.py)
+
+3. Activer l'environnement virtuel
+```bash
+cd flask_app
+source venv/bin/activate
+```
+
+4. Lancer l'application
+```
+/bin/bash launcher.sh
+```
 
 ## Utilisation
 
-Pour utiliser l'application, vous devez activer l'environnement virtuel en vous plaçant dans le répertoir `flaskp_app`, puis l'ativer avec `source venv/bin/activate`.
-Vous devre également modifier les informations de connexions vers la base de données dans le fichier `app.py``
+Une fois lancé, le site permet de consulter, ajouter, modifier et supprimer des enregistrements concernant l'activité de *Miambio* dans la base données.
 
-## Développement:
+## Auteurs:
 
-- Nathan PONTHIEU
-- Mickaël MARCO
-- Anna GAIFFE
-- Simone-désirée ZIGGAR
+- [Nathan PONTHIEU](https://github.com/nponthie-iut90)
+- [Anna GAIFFE](https://github.com/agaiffe2-iut90)
+- [Simone-désirée ZIGGAR](https://github.com/sdziggar-iut90)
+- [Mickaël MARCO](https://github.com/mmarco-iut90)
 
 ## Statut du projet
 
