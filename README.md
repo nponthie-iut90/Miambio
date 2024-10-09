@@ -7,6 +7,7 @@ Ce projet est une application web simple de gestion de base de données pour une
 1. [Installation](#installation)
 2. [Utilisation](#utilisation)
 3. [Auteurs](#auteurs)
+4. [Statut du projet](#statut-du-projet)
 
 ## Installation
 
